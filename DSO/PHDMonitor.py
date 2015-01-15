@@ -4,6 +4,7 @@
 #!/usr/bin/env python
 
 import datetime, socket, sys, json
+from collections import deque
 
 host = '127.0.0.1'
 port = 4400
@@ -21,14 +22,6 @@ print
 print
 print "Looking for PHD2 'Star Lost' events on your PHD2..."
 print
-for l in s.makefile() :
-    m = json.loads(l)
-    if 'Event' in m and m['Event'] == 'StarLost' :
-        print 'Star Lost at time= ' + str(datetime.datetime.fromtimestamp(m['Timestamp']))
-        
-#Extended info
-import datetime
-from collections import deque
 
 threshold = 4
 queue = deque()
